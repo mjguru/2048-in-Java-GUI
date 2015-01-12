@@ -1,0 +1,2273 @@
+// Game - 2048 
+
+import java.awt.*;
+import java.util.*;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.* ;
+
+public class NewJFrame extends javax.swing.JFrame 
+{
+    
+    // Initializes all the global variables
+    
+    int ar1[][] = new int[4][4];
+    int ar2[][] = new int[4][4];
+    int ar[][] = new int[4][4] ;
+    int i,j ;  
+    int score ;
+    int com ; 
+    int moves  ;
+    int b ;
+    int input ; 
+    CardLayout cl ;
+    int und ;
+    int s , s1, s2;
+    int ov ;
+    int highesttile = 0 ;
+    
+    // Initializing variables for high scores and high tiles in hall of fame panel
+    
+    int htileint[] = new int[5] ;
+    String htileString[] = new String[5] ; 
+    int hscoreint[] = new int[5] ;
+    String hscoreString[] = new String[5] ;
+    
+       
+    
+    // Variables for First Panel
+    
+    String name ;
+    char tem = 'A';
+    String a1,a2 ;
+    int ab = 0;
+    
+    // Initializes the Font, size and colour for all the numbers (used later
+    // in lStyle function) 
+    
+    Font f1 = new Font("Algerian",Font.PLAIN,80);
+    Font f2 = new Font("Algerian",Font.PLAIN,70);
+    Font f3 = new Font("Algerian",Font.PLAIN,50);
+    Font f4 = new Font("Algerian",Font.PLAIN,40);
+    Font f5 = new Font("Algerian",Font.BOLD,30);
+    Font f6 = new Font("Algerian",Font.BOLD,25);
+    Color c0 = new Color(255,255,255) ; 
+    Color c2 = new Color(255,204,255);
+    Color c4 = new Color(255,204,204);
+    Color c8 = new Color(255,102,102);
+    Color c16 = new Color(255,204,153);
+    Color c32 = new Color(255,255,0);
+    Color c64 = new Color(204,204,0);
+    Color c128 = new Color(0,204,153);
+    Color c256 = new Color(255,0,0);
+    Color c512 = new Color(204,51,255);
+    Color c1024 = new Color(204,0,102);
+    Color c2048 = new Color(102,204,255);
+    Color c4096 = new Color(0,102,255);
+    Color c8192 = new Color(204,0,102);
+    Color c16384 = new Color(0,102,153);
+    Color c32768 = new Color(102,0,0);
+    Color c65536 = new Color(102,0,102);
+    Color c131072 = new Color(102,51,0);          
+
+    public NewJFrame()  {
+        initComponents();
+        cl = (CardLayout)getContentPane().getLayout();
+        tin.requestFocus();   
+        jTextArea1.setEditable(false);
+        jTextArea2.setEditable(false);  
+    }
+
+   
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        Register = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        lin = new javax.swing.JLabel();
+        tin = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        scon = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        Menu = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        lUser = new javax.swing.JLabel();
+        jButton17 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        Game = new javax.swing.JPanel();
+        l1 = new javax.swing.JLabel();
+        l2 = new javax.swing.JLabel();
+        l3 = new javax.swing.JLabel();
+        l4 = new javax.swing.JLabel();
+        l5 = new javax.swing.JLabel();
+        l6 = new javax.swing.JLabel();
+        l7 = new javax.swing.JLabel();
+        l8 = new javax.swing.JLabel();
+        l9 = new javax.swing.JLabel();
+        l10 = new javax.swing.JLabel();
+        l11 = new javax.swing.JLabel();
+        l12 = new javax.swing.JLabel();
+        l13 = new javax.swing.JLabel();
+        l14 = new javax.swing.JLabel();
+        l15 = new javax.swing.JLabel();
+        l16 = new javax.swing.JLabel();
+        t1 = new javax.swing.JTextField();
+        lscore = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
+        lscore1 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        Game_Over = new javax.swing.JPanel();
+        fScore = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        You_Won = new javax.swing.JPanel();
+        Pl_n = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        HOF_HS = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        hss5 = new javax.swing.JLabel();
+        hsn1 = new javax.swing.JLabel();
+        hsn2 = new javax.swing.JLabel();
+        hsn3 = new javax.swing.JLabel();
+        hsn4 = new javax.swing.JLabel();
+        hsn5 = new javax.swing.JLabel();
+        hss1 = new javax.swing.JLabel();
+        hss2 = new javax.swing.JLabel();
+        hss3 = new javax.swing.JLabel();
+        hss4 = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        HOF_HT = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        hts5 = new javax.swing.JLabel();
+        htn1 = new javax.swing.JLabel();
+        htn2 = new javax.swing.JLabel();
+        htn3 = new javax.swing.JLabel();
+        htn4 = new javax.swing.JLabel();
+        htn5 = new javax.swing.JLabel();
+        hts1 = new javax.swing.JLabel();
+        hts2 = new javax.swing.JLabel();
+        hts3 = new javax.swing.JLabel();
+        hts4 = new javax.swing.JLabel();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        About_Us = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextArea2 = new javax.swing.JTextArea();
+        jButton19 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        Instructions = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jButton18 = new javax.swing.JButton();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel24 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new java.awt.CardLayout());
+
+        Register.setBackground(new java.awt.Color(102, 255, 153));
+        Register.setMaximumSize(new java.awt.Dimension(600, 600));
+        Register.setMinimumSize(new java.awt.Dimension(600, 600));
+        Register.setPreferredSize(new java.awt.Dimension(600, 600));
+        Register.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setBackground(new java.awt.Color(255, 0, 51));
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 72)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("2048");
+        jLabel5.setOpaque(true);
+        Register.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 395, 116));
+
+        lin.setBackground(new java.awt.Color(255, 255, 255));
+        lin.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        lin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lin.setOpaque(true);
+        Register.add(lin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 600, 80));
+
+        tin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tinActionPerformed(evt);
+            }
+        });
+        tin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tinKeyReleased(evt);
+            }
+        });
+        Register.add(tin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 0, 0));
+
+        jLabel7.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Enter your nickname:");
+        Register.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 550, 100));
+
+        scon.setBackground(new java.awt.Color(9, 80, 208));
+        scon.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        scon.setForeground(new java.awt.Color(255, 255, 255));
+        scon.setText("Login");
+        scon.setOpaque(true);
+        scon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sconActionPerformed(evt);
+            }
+        });
+        Register.add(scon, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 470, 300, 100));
+
+        jLabel8.setFont(new java.awt.Font("Alex Brush", 0, 36)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("(3 - 8 Characters)");
+        Register.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 380, -1, 100));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel9.setOpaque(true);
+        Register.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 700));
+
+        getContentPane().add(Register, "card1");
+
+        Menu.setBackground(new java.awt.Color(102, 255, 153));
+        Menu.setMaximumSize(new java.awt.Dimension(600, 600));
+        Menu.setMinimumSize(new java.awt.Dimension(600, 600));
+        Menu.setPreferredSize(new java.awt.Dimension(600, 600));
+        Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(9, 80, 208));
+        jButton1.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Start Game");
+        jButton1.setOpaque(true);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        Menu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 300, 105));
+
+        jLabel3.setBackground(new java.awt.Color(255, 0, 51));
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 72)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("2048");
+        jLabel3.setOpaque(true);
+        Menu.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 377, 120));
+
+        jButton9.setBackground(new java.awt.Color(9, 80, 208));
+        jButton9.setFont(new java.awt.Font("Brush Script MT", 0, 36)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Hall of Fame");
+        jButton9.setOpaque(true);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        Menu.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 200, 85));
+
+        jButton10.setBackground(new java.awt.Color(9, 80, 208));
+        jButton10.setFont(new java.awt.Font("Brush Script MT", 0, 36)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setText("About us");
+        jButton10.setOpaque(true);
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        Menu.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 555, 200, 85));
+
+        jButton11.setBackground(new java.awt.Color(9, 80, 208));
+        jButton11.setFont(new java.awt.Font("Brush Script MT", 0, 24)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setText("Logout");
+        jButton11.setOpaque(true);
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        Menu.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 90, 50));
+
+        lUser.setFont(new java.awt.Font("Alex Brush", 0, 36)); // NOI18N
+        lUser.setForeground(new java.awt.Color(255, 255, 0));
+        lUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Menu.add(lUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 160, 40));
+
+        jButton17.setBackground(new java.awt.Color(9, 80, 208));
+        jButton17.setFont(new java.awt.Font("Brush Script MT", 0, 36)); // NOI18N
+        jButton17.setForeground(new java.awt.Color(255, 255, 255));
+        jButton17.setText("Instructions");
+        jButton17.setOpaque(true);
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        Menu.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 325, 200, 85));
+
+        jLabel14.setFont(new java.awt.Font("Alex Brush", 0, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Welcome");
+        Menu.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, 50));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel17.setOpaque(true);
+        Menu.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 700));
+
+        getContentPane().add(Menu, "card2");
+
+        Game.setBackground(new java.awt.Color(102, 255, 153));
+        Game.setMaximumSize(new java.awt.Dimension(600, 600));
+        Game.setMinimumSize(new java.awt.Dimension(600, 600));
+        Game.setPreferredSize(new java.awt.Dimension(600, 600));
+        Game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        l1.setFont(new java.awt.Font("Algerian", 1, 25)); // NOI18N
+        l1.setForeground(new java.awt.Color(255, 255, 255));
+        l1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l1.setToolTipText("");
+        l1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l1.setMaximumSize(new java.awt.Dimension(100, 100));
+        l1.setMinimumSize(new java.awt.Dimension(100, 100));
+        l1.setOpaque(true);
+        l1.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 100, 100));
+
+        l2.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l2.setMaximumSize(new java.awt.Dimension(100, 100));
+        l2.setMinimumSize(new java.awt.Dimension(100, 100));
+        l2.setOpaque(true);
+        l2.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 100, 100));
+
+        l3.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l3.setMaximumSize(new java.awt.Dimension(100, 100));
+        l3.setMinimumSize(new java.awt.Dimension(100, 100));
+        l3.setOpaque(true);
+        l3.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 100, 100));
+
+        l4.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l4.setMaximumSize(new java.awt.Dimension(100, 100));
+        l4.setMinimumSize(new java.awt.Dimension(100, 100));
+        l4.setOpaque(true);
+        l4.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 100, 100));
+
+        l5.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l5.setMaximumSize(new java.awt.Dimension(100, 100));
+        l5.setMinimumSize(new java.awt.Dimension(100, 100));
+        l5.setOpaque(true);
+        l5.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 100, 100));
+
+        l6.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l6.setMaximumSize(new java.awt.Dimension(100, 100));
+        l6.setMinimumSize(new java.awt.Dimension(100, 100));
+        l6.setOpaque(true);
+        l6.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 100, 100));
+
+        l7.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l7.setMaximumSize(new java.awt.Dimension(100, 100));
+        l7.setMinimumSize(new java.awt.Dimension(100, 100));
+        l7.setOpaque(true);
+        l7.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 100, 100));
+
+        l8.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l8.setMaximumSize(new java.awt.Dimension(100, 100));
+        l8.setMinimumSize(new java.awt.Dimension(100, 100));
+        l8.setOpaque(true);
+        l8.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 100, 100));
+
+        l9.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l9.setMaximumSize(new java.awt.Dimension(100, 100));
+        l9.setMinimumSize(new java.awt.Dimension(100, 100));
+        l9.setOpaque(true);
+        l9.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 100, 100));
+
+        l10.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l10.setMaximumSize(new java.awt.Dimension(100, 100));
+        l10.setMinimumSize(new java.awt.Dimension(100, 100));
+        l10.setOpaque(true);
+        l10.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 100, 100));
+
+        l11.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l11.setMaximumSize(new java.awt.Dimension(100, 100));
+        l11.setMinimumSize(new java.awt.Dimension(100, 100));
+        l11.setOpaque(true);
+        l11.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 100, 100));
+
+        l12.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l12.setMaximumSize(new java.awt.Dimension(100, 100));
+        l12.setMinimumSize(new java.awt.Dimension(100, 100));
+        l12.setOpaque(true);
+        l12.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 100, 100));
+
+        l13.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l13.setMaximumSize(new java.awt.Dimension(100, 100));
+        l13.setMinimumSize(new java.awt.Dimension(100, 100));
+        l13.setOpaque(true);
+        l13.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 100, 100));
+
+        l14.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l14.setMaximumSize(new java.awt.Dimension(100, 100));
+        l14.setMinimumSize(new java.awt.Dimension(100, 100));
+        l14.setOpaque(true);
+        l14.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 100, 100));
+
+        l15.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l15.setMaximumSize(new java.awt.Dimension(100, 100));
+        l15.setMinimumSize(new java.awt.Dimension(100, 100));
+        l15.setOpaque(true);
+        l15.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, 100, 100));
+
+        l16.setFont(new java.awt.Font("Algerian", 0, 40)); // NOI18N
+        l16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        l16.setMaximumSize(new java.awt.Dimension(100, 100));
+        l16.setMinimumSize(new java.awt.Dimension(100, 100));
+        l16.setOpaque(true);
+        l16.setPreferredSize(new java.awt.Dimension(100, 100));
+        Game.add(l16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 100, 100));
+
+        t1.setPreferredSize(new java.awt.Dimension(0, 0));
+        t1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t1ActionPerformed(evt);
+            }
+        });
+        t1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                t1KeyReleased(evt);
+            }
+        });
+        Game.add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 490, 0, 20));
+
+        lscore.setBackground(new java.awt.Color(255, 255, 204));
+        lscore.setFont(new java.awt.Font("Monotype Corsiva", 1, 48)); // NOI18N
+        lscore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lscore.setOpaque(true);
+        Game.add(lscore, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 140, 90));
+
+        jButton7.setBackground(new java.awt.Color(9, 80, 208));
+        jButton7.setFont(new java.awt.Font("Monotype Corsiva", 1, 48)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Undo");
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setOpaque(true);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        Game.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, 140, 90));
+
+        jLabel6.setBackground(new java.awt.Color(255, 0, 51));
+        jLabel6.setFont(new java.awt.Font("Calibri", 0, 72)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("2048");
+        jLabel6.setOpaque(true);
+        Game.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 377, 130));
+
+        jButton12.setBackground(new java.awt.Color(9, 80, 208));
+        jButton12.setFont(new java.awt.Font("Monotype Corsiva", 1, 48)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
+        jButton12.setText("End");
+        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton12.setOpaque(true);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        Game.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 140, 90));
+
+        lscore1.setBackground(new java.awt.Color(255, 255, 204));
+        lscore1.setFont(new java.awt.Font("Monotype Corsiva", 1, 48)); // NOI18N
+        lscore1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lscore1.setText("Score:");
+        lscore1.setOpaque(true);
+        Game.add(lscore1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 140, 90));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel18.setOpaque(true);
+        Game.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 700));
+
+        getContentPane().add(Game, "card3");
+
+        Game_Over.setBackground(new java.awt.Color(102, 255, 153));
+        Game_Over.setMaximumSize(new java.awt.Dimension(600, 600));
+        Game_Over.setMinimumSize(new java.awt.Dimension(600, 600));
+        Game_Over.setPreferredSize(new java.awt.Dimension(600, 600));
+        Game_Over.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        fScore.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        fScore.setForeground(new java.awt.Color(255, 255, 0));
+        fScore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Game_Over.add(fScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 290, 100));
+
+        jButton2.setBackground(new java.awt.Color(9, 80, 208));
+        jButton2.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Undo One Move ");
+        jButton2.setOpaque(true);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        Game_Over.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 300, 100));
+
+        jLabel4.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Game Over");
+        Game_Over.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 300, 100));
+
+        jButton8.setBackground(new java.awt.Color(9, 80, 208));
+        jButton8.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Continue");
+        jButton8.setOpaque(true);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        Game_Over.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 300, 100));
+
+        jLabel1.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Your Score:");
+        Game_Over.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, 100));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel19.setOpaque(true);
+        Game_Over.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 700));
+
+        getContentPane().add(Game_Over, "card4");
+
+        You_Won.setBackground(new java.awt.Color(102, 255, 153));
+        You_Won.setMaximumSize(new java.awt.Dimension(600, 600));
+        You_Won.setMinimumSize(new java.awt.Dimension(600, 600));
+        You_Won.setPreferredSize(new java.awt.Dimension(600, 600));
+        You_Won.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Pl_n.setFont(new java.awt.Font("Alex Brush", 0, 120)); // NOI18N
+        Pl_n.setForeground(new java.awt.Color(255, 255, 0));
+        Pl_n.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Pl_n.setText("LAXMI");
+        You_Won.add(Pl_n, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 560, 120));
+
+        jButton4.setBackground(new java.awt.Color(9, 80, 208));
+        jButton4.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Continue");
+        jButton4.setOpaque(true);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        You_Won.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 225, 125));
+
+        jButton6.setBackground(new java.awt.Color(9, 80, 208));
+        jButton6.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("End");
+        jButton6.setOpaque(true);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        You_Won.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 360, 225, 125));
+
+        jLabel25.setFont(new java.awt.Font("Alex Brush", 0, 84)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("You Won!");
+        You_Won.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 350, 100));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel20.setOpaque(true);
+        You_Won.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 700));
+
+        getContentPane().add(You_Won, "card5");
+
+        HOF_HS.setBackground(new java.awt.Color(102, 255, 153));
+        HOF_HS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Hall Of  fame");
+        HOF_HS.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 380, 100));
+
+        jLabel11.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("High Scores");
+        HOF_HS.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 380, 100));
+
+        hss5.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hss5.setForeground(new java.awt.Color(255, 255, 0));
+        hss5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hss5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 310, 110));
+
+        hsn1.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hsn1.setForeground(new java.awt.Color(255, 255, 0));
+        hsn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hsn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 310, 110));
+
+        hsn2.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hsn2.setForeground(new java.awt.Color(255, 255, 0));
+        hsn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hsn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 310, 110));
+
+        hsn3.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hsn3.setForeground(new java.awt.Color(255, 255, 0));
+        hsn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hsn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 310, 110));
+
+        hsn4.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hsn4.setForeground(new java.awt.Color(255, 255, 0));
+        hsn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hsn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 310, 110));
+
+        hsn5.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hsn5.setForeground(new java.awt.Color(255, 255, 0));
+        hsn5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hsn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 310, 110));
+
+        hss1.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hss1.setForeground(new java.awt.Color(255, 255, 0));
+        hss1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hss1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 310, 110));
+
+        hss2.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hss2.setForeground(new java.awt.Color(255, 255, 0));
+        hss2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hss2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 310, 110));
+
+        hss3.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hss3.setForeground(new java.awt.Color(255, 255, 0));
+        hss3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hss3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 310, 110));
+
+        hss4.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hss4.setForeground(new java.awt.Color(255, 255, 0));
+        hss4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HS.add(hss4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 310, 110));
+
+        jButton14.setBackground(new java.awt.Color(9, 80, 208));
+        jButton14.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
+        jButton14.setText("Next");
+        jButton14.setOpaque(true);
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        HOF_HS.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 550, 200, -1));
+
+        jLabel21.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel21.setOpaque(true);
+        HOF_HS.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 700));
+
+        getContentPane().add(HOF_HS, "card7");
+
+        HOF_HT.setBackground(new java.awt.Color(102, 255, 153));
+        HOF_HT.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Hall Of  fame");
+        HOF_HT.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 380, 100));
+
+        jLabel13.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("High Tiles");
+        HOF_HT.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 380, 100));
+
+        hts5.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hts5.setForeground(new java.awt.Color(255, 255, 0));
+        hts5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(hts5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 310, 100));
+
+        htn1.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        htn1.setForeground(new java.awt.Color(255, 255, 0));
+        htn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(htn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 310, 100));
+
+        htn2.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        htn2.setForeground(new java.awt.Color(255, 255, 0));
+        htn2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(htn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 310, 100));
+
+        htn3.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        htn3.setForeground(new java.awt.Color(255, 255, 0));
+        htn3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(htn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 310, 100));
+
+        htn4.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        htn4.setForeground(new java.awt.Color(255, 255, 0));
+        htn4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(htn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 310, 100));
+
+        htn5.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        htn5.setForeground(new java.awt.Color(255, 255, 0));
+        htn5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(htn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 310, 100));
+
+        hts1.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hts1.setForeground(new java.awt.Color(255, 255, 0));
+        hts1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(hts1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 310, 100));
+
+        hts2.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hts2.setForeground(new java.awt.Color(255, 255, 0));
+        hts2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(hts2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 310, 100));
+
+        hts3.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hts3.setForeground(new java.awt.Color(255, 255, 0));
+        hts3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(hts3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 310, 100));
+
+        hts4.setFont(new java.awt.Font("Alex Brush", 0, 60)); // NOI18N
+        hts4.setForeground(new java.awt.Color(255, 255, 0));
+        hts4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HOF_HT.add(hts4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 310, 100));
+
+        jButton15.setBackground(new java.awt.Color(9, 80, 208));
+        jButton15.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton15.setForeground(new java.awt.Color(255, 255, 255));
+        jButton15.setText("Main Menu");
+        jButton15.setOpaque(true);
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        HOF_HT.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 550, 250, 75));
+
+        jButton16.setBackground(new java.awt.Color(9, 80, 208));
+        jButton16.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton16.setForeground(new java.awt.Color(255, 255, 255));
+        jButton16.setText("Back");
+        jButton16.setOpaque(true);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        HOF_HT.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 550, 250, 75));
+
+        jLabel22.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel22.setOpaque(true);
+        HOF_HT.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 700));
+
+        getContentPane().add(HOF_HT, "card8");
+
+        About_Us.setBackground(new java.awt.Color(102, 255, 153));
+        About_Us.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("About Us");
+        About_Us.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 380, 100));
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Alex Brush", 0, 54)); // NOI18N
+        jTextArea2.setLineWrap(true);
+        jTextArea2.setRows(10);
+        jTextArea2.setText("  Java: JDK  v.7u.55\n  OS : Mac OS X version 10   Netbeans :v.7.3.1\n  By - Mohit Gurumukhani\n\n");
+        jTextArea2.setBorder(null);
+        About_Us.add(jTextArea2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 580, 280));
+
+        jButton19.setBackground(new java.awt.Color(9, 80, 208));
+        jButton19.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton19.setForeground(new java.awt.Color(255, 255, 255));
+        jButton19.setText("Main Menu");
+        jButton19.setOpaque(true);
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+        About_Us.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 510, 240, 90));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel23.setOpaque(true);
+        About_Us.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 700));
+
+        getContentPane().add(About_Us, "card10");
+
+        Instructions.setBackground(new java.awt.Color(102, 255, 153));
+        Instructions.setOpaque(false);
+        Instructions.setLayout(null);
+
+        jLabel15.setFont(new java.awt.Font("Alex Brush", 0, 72)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Instructions");
+        Instructions.add(jLabel15);
+        jLabel15.setBounds(160, 0, 380, 100);
+
+        jButton18.setBackground(new java.awt.Color(9, 80, 208));
+        jButton18.setFont(new java.awt.Font("Brush Script MT", 0, 48)); // NOI18N
+        jButton18.setForeground(new java.awt.Color(255, 255, 255));
+        jButton18.setText("Main Menu");
+        jButton18.setOpaque(true);
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+        Instructions.add(jButton18);
+        jButton18.setBounds(250, 590, 240, 80);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Alex Brush", 0, 48)); // NOI18N
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(10);
+        jTextArea1.setText(" Join tiles by using arrow keys or\n  'w,s,a,d'. Same tiles would add up\n  to form a new tile of their sum.\n New tiles would randomly appear\n after each move. You can also undo      your move. Your goal is to make the   2048 tile. Game ends if no more       space is left.\n");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setBorder(null);
+        jTextArea1.setDragEnabled(false);
+        Instructions.add(jTextArea1);
+        jTextArea1.setBounds(70, 90, 590, 480);
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/2560-1600-36074.jpg"))); // NOI18N
+        jLabel24.setOpaque(true);
+        Instructions.add(jLabel24);
+        jLabel24.setBounds(0, 0, 730, 700);
+
+        getContentPane().add(Instructions, "card9");
+
+        pack();
+    }// </editor-fold>                        
+
+    // This function takes in a lable as its arguement and styles it  
+    // according to its contents 
+    
+    public void lStyle(javax.swing.JLabel sam)
+    {
+        String t = sam.getText() ;
+        int n = 0 ;
+        if(t.equals("") == false)
+            n = Integer.parseInt(t);
+        switch (n)
+        {
+            case 0:
+            {
+                sam.setBackground(c0);
+                break ;
+            }
+            case 2:
+            {
+                sam.setFont(f1);
+                sam.setBackground(c2);
+                break ;
+            }
+            case 4:
+            {
+                sam.setFont(f1);
+                sam.setBackground(c4);
+                break ;
+            }
+            case 8:
+            {
+                sam.setFont(f1);
+                sam.setBackground(c8);
+                break ;
+            }
+            case 16:
+            {
+                sam.setFont(f2);
+                sam.setBackground(c16);
+                break ;
+            }
+            case 32:
+            {
+                sam.setFont(f2);
+                sam.setBackground(c32);
+                break ;
+            }
+            case 64:
+            {
+                sam.setFont(f2);
+                sam.setBackground(c64);
+                break ;
+            }
+            case 128:
+            {
+                sam.setFont(f3);
+                sam.setBackground(c128);
+                break ;
+            }
+            case 256:
+            {
+                sam.setFont(f3);
+                sam.setBackground(c256);
+                break ;
+            }
+            case 512:
+            {
+                sam.setFont(f3);
+                sam.setBackground(c512);
+                break ;
+            }
+            case 1024:
+            {
+                sam.setFont(f4);
+                sam.setBackground(c1024);
+                break ;
+            }
+            case 2048:
+            {
+                sam.setFont(f4);
+                sam.setBackground(c2048);
+                break ;
+            }
+            case 4096:
+            {
+                sam.setFont(f4);
+                sam.setBackground(c4096);
+                break ;
+            }
+            case 8192:
+            {
+                sam.setFont(f4);
+                sam.setBackground(c8192);
+                break ;
+            }
+            case 16384:
+            {
+                sam.setFont(f5);
+                sam.setBackground(c16384);
+                break ;
+            }
+            case 32768:
+            {
+                sam.setFont(f5);
+                sam.setBackground(c32768);
+                break ;
+            }
+            case 65536:
+            {
+                sam.setFont(f5);
+                sam.setBackground(c65536);
+                break ;
+            }
+            case 131072:
+            {
+                sam.setFont(f6);
+                sam.setBackground(c131072);
+                break ;
+            }
+        }
+        sam.setForeground(Color.BLACK);
+        if(n >= 2048)
+        {
+            sam.setForeground(Color.WHITE) ;  
+        }
+    }
+    
+    // sets style (by using and calling lStyle)
+    
+    public void setStyle()
+    {
+            lStyle(l1);
+            lStyle(l2);
+            lStyle(l3);
+            lStyle(l4);
+            lStyle(l5);
+            lStyle(l6);
+            lStyle(l7);
+            lStyle(l8);
+            lStyle(l9);
+            lStyle(l10);
+            lStyle(l11);
+            lStyle(l12);
+            lStyle(l13);
+            lStyle(l14);
+            lStyle(l15);
+            lStyle(l16);
+    }   
+   
+    
+    // sets Labels (Boxes of grid and scores)
+    
+    public void setLabels()
+    {
+            if( ar[0][0] == 0)
+                l1.setText("");
+            else
+                l1.setText(Integer.toString(ar[0][0]));
+            if( ar[0][1] == 0)
+                l2.setText("");
+            else
+                l2.setText(Integer.toString(ar[0][1]));
+            if( ar[0][2] == 0)
+                l3.setText("");
+            else
+                l3.setText(Integer.toString(ar[0][2]));
+            if( ar[0][3] == 0)
+                l4.setText("");
+            else
+                l4.setText(Integer.toString(ar[0][3]));
+            if( ar[1][0] == 0)
+                l5.setText("");
+            else
+                l5.setText(Integer.toString(ar[1][0]));
+            if( ar[1][1] == 0)
+                l6.setText("");
+            else
+                l6.setText(Integer.toString(ar[1][1]));
+            if( ar[1][2] == 0)
+                l7.setText("");
+            else
+                l7.setText(Integer.toString(ar[1][2]));
+            if( ar[1][3] == 0)
+                l8.setText("");
+            else
+                l8.setText(Integer.toString(ar[1][3]));
+            if( ar[2][0] == 0)
+                l9.setText("");
+            else
+                l9.setText(Integer.toString(ar[2][0]));
+            if( ar[2][1] == 0)
+                l10.setText("");
+            else
+                l10.setText(Integer.toString(ar[2][1]));
+            if( ar[2][2] == 0)
+                l11.setText("");
+            else
+                l11.setText(Integer.toString(ar[2][2]));
+            if( ar[2][3] == 0)
+                l12.setText("");
+            else
+                l12.setText(Integer.toString(ar[2][3]));
+            if( ar[3][0] == 0)
+                l13.setText("");
+            else
+                l13.setText(Integer.toString(ar[3][0]));
+            if( ar[3][1] == 0)
+                l14.setText("");
+            else
+                l14.setText(Integer.toString(ar[3][1]));
+            if( ar[3][2] == 0)
+                l15.setText("");
+            else
+                l15.setText(Integer.toString(ar[3][2]));
+            if( ar[3][3] == 0)
+                l16.setText("");
+            else
+                l16.setText(Integer.toString(ar[3][3]));  
+           
+            lscore.setText(score + "");
+    }
+    
+    // Starts the game (initial code)
+    
+   public void startGame() 
+   {
+              
+        cl.show(getContentPane(),"card3") ; 
+        
+        // Sets Focus to the invisible Text Box
+         
+        t1.requestFocus();
+        
+        // Sets score to 0 for a new game
+        
+        score = 0 ;
+        
+        // Sets moves to 0
+        
+        moves = 0 ;
+        com = 0 ;
+        b = 0 ;
+        
+        // sets all arrays to 0
+        
+        for(int r = 0 ; r < 4 ; r++)
+        {
+            for(int c = 0 ; c < 4 ; c++)
+            {
+                ar[r][c] = 0 ;
+                ar1[r][c] = 0 ;
+                ar2[r][c] = 0 ;
+            }
+        }
+        
+        // Assigning values of either 2 or 4 to any 2 values of the array
+       
+            int arr = ( int )( Math.random() * 4 ) ;
+            int arc = ( int )( Math.random() * 4 ) ;
+            int val = ( int )( Math.random() * 4 ) ;
+            if( val == 0 )
+               ar[arr][arc] = 4 ;
+            else
+               ar[arr][arc] = 2 ; 
+            
+            while(true)
+            {
+            int arnr = ( int )( Math.random() * 4 ) ;
+            int arnc = ( int )( Math.random() * 4 ) ;
+            val = ( int )( Math.random() * 4 ) ;
+            if(arnr == arr && arnc == arc)
+                continue;
+            if( val == 0 )
+               ar[arnr][arnc] = 4 ;
+            else
+               ar[arnr][arnc] = 2 ;
+            break ;
+            }
+               ar[0][0] = 1024 ;
+               ar[0][1] = 1024 ;
+               ar[1][0] = 1024 ;
+               ar[1][1] = 1024 ;
+        // Initializing all the boxes to value of array and styles all of them
+       //  according to their contents by using lStyle function.         
+            
+            setLabels() ;            
+            setStyle() ;
+            
+       
+   }
+   
+  
+   // Moves the boxes
+   
+   public int lMove(int input)
+   {
+       int sum = 0 ; 
+       
+       // Move boxes up if the user pressed w or up arrow key
+        
+        if( input == 87  || input == 38)
+        {
+            // Indexes every column
+            
+            for( i = 0 ; i < 4 ; i++)
+            {
+                           
+                for( j = 0 ; j < 4 ; j++ )
+                {
+                   
+                   // Cheks which boxes have 0 and moves them up 
+                    
+                    if(ar[2][i] == 0)
+                    {
+                        ar[2][i] = ar[3][i] ;
+                        ar[3][i] = 0 ;
+                    }
+                    if(ar[1][i] == 0)
+                    {
+                        ar[1][i] = ar[2][i] ;
+                        ar[2][i] = ar[3][i] ;
+                        ar[3][i] = 0 ;
+                    }
+                    if(ar[0][i] == 0)
+                    {
+                        ar[0][i] = ar[1][i] ;
+                        ar[1][i] = ar[2][i] ;
+                        ar[2][i] = ar[3][i] ;
+                        ar[3][i] = 0 ; 
+                    }                  
+                    
+                    // Checks which boxes are the same  and moves them up according
+                    // to the conditions
+                    
+                    if( ar[0][i] == ar[1][i] && ar[2][i] == ar[3][i])
+                    {
+                        ar[0][i] *= 2 ;
+                        ar[1][i] = ar[2][i] * 2 ;
+                        ar[2][i] = 0 ;
+                        ar[3][i] = 0 ;
+                        sum = sum + ar[0][i] + ar[1][i];
+                        break;
+                    }
+                    if( ar[0][i] == ar[1][i] )
+                    {
+                        ar[0][i] *= 2 ;
+                        ar[1][i] = ar[2][i] ;
+                        ar[2][i] = ar[3][i] ;
+                        ar[3][i] = 0 ;
+                        sum = sum + ar[0][i];
+                        break;
+                    }
+                    if( ar[1][i] == ar[2][i] )
+                    {
+                        ar[1][i] *= 2 ;
+                        ar[2][i] = ar[3][i] ;
+                        ar[3][i] = 0 ;
+                        sum = sum + ar[1][i] ;
+                        break;
+                    }
+                    if( ar[2][i] == ar[3][i] )
+                    {
+                        ar[2][i] *= 2 ;
+                        ar[3][i] = 0 ;
+                        sum = sum + ar[2][i] ;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Move boxes down if the user pressed s or down arrow key
+        
+        if( input == 83 || input == 40 )
+        {
+            // Indexes every column
+            
+            for( i = 0 ; i < 4 ; i++)
+            {      
+                for( j = 0 ; j < 4 ; j++ )
+                {
+                   
+                   // Cheks which boxes have 0 and moves them down 
+                    
+                    if(ar[1][i] == 0)
+                    {
+                        ar[1][i] = ar[0][i] ;
+                        ar[0][i] = 0 ;
+                    }
+                    if(ar[2][i] == 0)
+                    {
+                        ar[2][i] = ar[1][i] ;
+                        ar[1][i] = ar[0][i] ;
+                        ar[0][i] = 0 ;
+                    }
+                    if(ar[3][i] == 0)
+                    {
+                        ar[3][i] = ar[2][i] ;
+                        ar[2][i] = ar[1][i] ;
+                        ar[1][i] = ar[0][i] ;
+                        ar[0][i] = 0 ; 
+                    }                  
+                    
+                    // Checks which boxes are the same  and moves them down according
+                    // to the conditions
+                    
+                    if( ar[3][i] == ar[2][i] && ar[1][i] == ar[0][i])
+                    {
+                        ar[3][i] *= 2 ;
+                        ar[2][i] = ar[1][i] * 2 ;
+                        ar[1][i] = 0 ;
+                        ar[0][i] = 0 ;
+                        sum = sum + ar[3][i] + ar[2][i] ;
+                        break;
+                    }
+                    if( ar[3][i] == ar[2][i] )
+                    {
+                        ar[3][i] *= 2 ;
+                        ar[2][i] = ar[1][i] ;
+                        ar[1][i] = ar[0][i] ;
+                        ar[0][i] = 0 ;
+                        sum = sum + ar[3][i] ;
+                        break;
+                    }
+                    if( ar[2][i] == ar[1][i] )
+                    {
+                        ar[2][i] *= 2 ;
+                        ar[1][i] = ar[0][i] ;
+                        ar[0][i] = 0 ;
+                        sum = sum + ar[2][i] ;
+                        break;
+                    }
+                    if( ar[1][i] == ar[0][i] )
+                    {
+                        ar[1][i] *= 2 ;
+                        ar[0][i] = 0 ;
+                        sum = sum + ar[1][i] ;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Move boxes left if the user pressed a or left arrow key
+        
+        if( input == 65 || input == 37 )
+        {
+            // Indexes every row
+            
+            for( i = 0 ; i < 4 ; i++)
+            {        
+                for( j = 0 ; j < 4 ; j++ )
+                {
+  
+                    // Cheks which boxes have 0 and moves them left 
+                    
+                    if(ar[i][2] == 0)
+                    {
+                        ar[i][2] = ar[i][3] ;
+                        ar[i][3] = 0 ;
+                    }
+                    if(ar[i][1] == 0)
+                    {
+                        ar[i][1] = ar[i][2] ;
+                        ar[i][2] = ar[i][3] ;
+                        ar[i][3] = 0 ;
+                    }
+                    if(ar[i][0] == 0)
+                    {
+                        ar[i][0] = ar[i][1] ;
+                        ar[i][1] = ar[i][2] ;
+                        ar[i][2] = ar[i][3] ;
+                        ar[i][3] = 0 ; 
+                    }                  
+                    
+                    // Checks which boxes are the same  and moves them left according
+                    // to the conditions
+                    
+                    if( ar[i][0] == ar[i][1] && ar[i][2] == ar[i][3])
+                    {
+                        ar[i][0] *= 2 ;
+                        ar[i][1] = ar[i][2] * 2 ;
+                        ar[i][2] = 0 ;
+                        ar[i][3] = 0 ;
+                        sum = sum + ar[i][0] + ar[i][1] ;
+                        break;
+                    }
+                    if( ar[i][0] == ar[i][1] )
+                    {
+                        ar[i][0] *= 2 ;
+                        ar[i][1] = ar[i][2] ;
+                        ar[i][2] = ar[i][3] ;
+                        ar[i][3] = 0 ;
+                        sum = sum + ar[i][0] ;
+                        break;
+                    }
+                    if( ar[i][1] == ar[i][2] )
+                    {
+                        ar[i][1] *= 2 ;
+                        ar[i][2] = ar[i][3] ;
+                        ar[i][3] = 0 ;
+                        sum = sum + ar[i][1] ;
+                        break;                        
+                    }
+                    if( ar[i][2] == ar[i][3] )
+                    {
+                        ar[i][2] *= 2 ;
+                        ar[i][3] = 0 ;
+                        sum = sum + ar[i][2] ;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Move boxes right if the user pressed d or right arrow key
+        
+        if( input == 68 || input == 39 )
+        {
+            // Indexes every row
+            
+            for( i = 0 ; i < 4 ; i++)
+            {               
+                for( j = 0 ; j < 4 ; j++ )
+                {
+                   
+                   // Checks which boxes have 0 and moves them right 
+                    
+                    if(ar[i][1] == 0)
+                    {
+                        ar[i][1] = ar[i][0] ;
+                        ar[i][0] = 0 ;
+                    }
+                    if(ar[i][2] == 0)
+                    {
+                        ar[i][2] = ar[i][1] ;
+                        ar[i][1] = ar[i][0] ;
+                        ar[i][0] = 0 ;
+                    }
+                    if(ar[i][3] == 0)
+                    {
+                        ar[i][3] = ar[i][2] ;
+                        ar[i][2] = ar[i][1] ;
+                        ar[i][1] = ar[i][0] ;
+                        ar[i][0] = 0 ; 
+                    }                  
+                    
+                    // Checks which boxes are the same  and moves them to right according
+                    // to the conditions
+                    
+                    if( ar[i][3] == ar[i][2] && ar[i][1] == ar[i][0])
+                    {
+                        ar[i][3] *= 2 ;
+                        ar[i][2] = ar[i][1] * 2 ;
+                        ar[i][1] = 0 ;
+                        ar[i][0] = 0 ;
+                        sum = sum + ar[i][3] + ar[i][2] ;
+                        break;
+                    }
+                    if( ar[i][3] == ar[i][2] )
+                    {
+                        ar[i][3] *= 2 ;
+                        ar[i][2] = ar[i][1] ;
+                        ar[i][1] = ar[i][0] ;
+                        ar[i][0] = 0 ;
+                        sum = sum + ar[i][3] ;
+                        break;
+                    }
+                    if( ar[i][2] == ar[i][1] )
+                    {
+                        ar[i][2] *= 2 ;
+                        ar[i][1] = ar[i][0] ;
+                        ar[i][0] = 0 ;
+                        sum = sum + ar[i][2] ;
+                        break;
+                    }
+                    if( ar[i][1] == ar[i][0] )
+                    {
+                        ar[i][1] *= 2 ;
+                        ar[i][0] = 0 ;
+                        sum = sum + ar[i][1] ;
+                        break;
+                    }
+                }
+            }
+        }
+        return sum ;
+   }
+   
+   // Function to write into a file
+   
+   public void writeToFile(String text, String f)
+   {
+   try {
+            File F = new File(f) ;
+            BufferedWriter bw = new BufferedWriter(new FileWriter (F));
+            bw.write(text);
+            bw.close();
+			
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("Not success");}
+   }
+   
+   // Function to read file
+   
+   public void readFile()
+   {
+          try {
+            FileReader f = new FileReader("HighTile.txt");
+            FileReader g = new FileReader("HighScore.txt");
+            Scanner sc = new Scanner(f) ;
+            Scanner sd = new Scanner(g) ;
+            String htile = sc.nextLine() ;
+            String hscore = sd.nextLine() ;           
+            String htilear[] = htile.split(" ") ;
+            String hscorear[] = hscore.split(" ") ;
+            for(int l = 0 ; l < 10 ; l+=2)
+             {
+                int m = l/2 ;
+                htileString[m] = htilear[l] ;
+                hscoreString[m] = hscorear[l] ; 
+                htileint[m] = Integer.parseInt(htilear[l+1]) ;
+                hscoreint[m] = Integer.parseInt(hscorear[l+1]) ;
+             }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
+   
+   // Function to Shift ranks of Hall of Famers
+   
+   public void shiftRanks(int h[],String hn[],int r,boolean hsc)
+   {
+       int c = 0;
+      if(hsc == true)
+      {
+          c = score;
+      }
+      if(hsc == false       )
+      {
+          c = highesttile ;
+      }
+       
+       if(r == 5)
+       {
+           h[4] = c ;
+           hn[4] = name ;
+       }
+       else
+       {
+           h[4] = h[3] ;
+           hn[4] = hn[3] ;
+       }
+       if(r == 4)
+       {
+           h[3] = c ;
+           hn[3] = name ;
+       }
+       else
+       {
+           h[3] = h[2] ;
+           hn[3] = hn[2] ;
+       }
+       if(r == 3)
+       {
+           h[2] = c ;
+           hn[2] = name ;
+       }
+       else
+       {
+           h[2] = h[1] ;
+           hn[2] = hn[1] ;
+       }
+       if(r == 2)
+       {
+           h[1] = c ;
+           hn[1] = name ;
+       }
+       if(r == 1)
+       {
+           h[1] = h[0] ;
+           hn[1] = hn[0] ;
+           h[0] = c ;
+           hn[0] = name ;
+       }
+      
+        String srt = hn[0] + " " + h[0];
+        for(int k = 1 ; k < 5 ; k++)
+        {
+            srt = srt + " " + hn[k] + " " + h[k]  ; 
+        }
+       if(hsc == true)
+       {
+           writeToFile(srt,"HighScore.txt") ;
+       }
+       if(hsc == false)
+       {
+           writeToFile(srt,"HighTile.txt") ;
+       }
+     
+      
+   }
+   
+   //Changes scores according to high scores and sets the text file according to it
+   
+   public void changeHighScore()
+   {
+       int rank = 0;
+       for(int k = 4 ; k >= 0 ; k--)
+       {
+           if(score >= hscoreint[k])
+           {
+               rank = k+1 ;
+           }
+       }
+       if(rank > 0)
+       {
+           shiftRanks(hscoreint,hscoreString,rank,true) ;
+       }
+   }
+   
+   //Changes tiles according to high scores and sets the text file according to it
+   
+   public void changeHighTile(int t)
+   {
+        int rank = 0;
+        for(int k = 4 ; k >= 0 ; k--)
+        {
+            if(t >= htileint[k])
+           {
+               rank = k+1 ;
+           }
+       }
+       if(rank > 0)
+       {
+           shiftRanks(htileint,htileString,rank,false) ;
+        }
+   }
+   
+  public int findHighestTile()
+  {
+      int h = 0 ;
+      for(int r = 0 ; r < 4 ; r++)
+      {
+          for(int c = 0 ; c < 4 ; c++)
+          {
+              if(ar[r][c] > h)
+                  h = ar[r][c] ; 
+          }
+      }
+      return h ;
+  }
+  
+  public void allHallOfFame()
+  {
+      readFile() ;  
+      highesttile = findHighestTile() ;
+      changeHighTile(highesttile) ;
+      changeHighScore() ;
+      readFile() ;  
+      setHallOfFame() ;
+  }
+   
+   // Undoes one move
+   
+   public void undo()
+   {
+        // Undo(es) the move done
+        
+        t1.requestFocus();  
+        if( moves != 0 )
+        {
+            if(und == 0)
+            {
+                und = 1 ;
+                if( moves % 2 == 1)
+                {        
+                    score -= s1 ;
+                    for(int r = 0 ; r < 4 ; r++)
+                    {
+                        for(int c = 0 ; c < 4 ; c++)
+                        {
+                            ar[r][c] = ar1[r][c];           
+                        }
+                    }
+                }
+                else
+                {
+                    score -= s2 ;
+                    for(int r = 0 ; r < 4 ; r++)
+                    {
+                        for(int c = 0 ; c < 4 ; c++)
+                        {
+                            ar[r][c] = ar2[r][c];           
+                        }
+                    }
+                }
+       
+                  // After copying original array to "previous move array", it sets focus 
+                 // to the invisible text box and prints (and styles) all the labels
+              
+                moves-- ;
+                if(findHighestTile() < 2048)
+                    b = 0 ;
+                setLabels() ;            
+                setStyle() ;
+            }
+        }
+   }
+   
+   public void setHallOfFame()
+   {
+       // Setting The High score Labels
+       
+       hsn1.setText(hscoreString[0]);
+       hsn2.setText(hscoreString[1]);
+       hsn3.setText(hscoreString[2]);
+       hsn4.setText(hscoreString[3]);
+       hsn5.setText(hscoreString[4]);
+       
+       hss1.setText(hscoreint[0] + "");
+       hss2.setText(hscoreint[1] + "");
+       hss3.setText(hscoreint[2] + "");
+       hss4.setText(hscoreint[3] + "");
+       hss5.setText(hscoreint[4] + "");
+       
+       // Setting The High tile Labels
+       
+       htn1.setText(htileString[0]);
+       htn2.setText(htileString[1]);
+       htn3.setText(htileString[2]);
+       htn4.setText(htileString[3]);
+       htn5.setText(htileString[4]);
+       
+       hts1.setText(htileint[0] + "");
+       hts2.setText(htileint[1] + "");
+       hts3.setText(htileint[2] + "");
+       hts4.setText(htileint[3] + "");
+       hts5.setText(htileint[4] + "");
+   }
+    // Start button 
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+        startGame() ;
+        
+    }                                        
+
+    // Invisible text box on the game panel
+    
+    private void t1KeyReleased(java.awt.event.KeyEvent evt) {                               
+        
+        // Gets input from user through invisible text box
+            
+        t1.requestFocus();
+        input = evt.getKeyCode() ;
+        t1.setText("");
+          
+        // If input is according to what we can take ( wsad or cursor keys )
+        // then only execute the following code
+        
+        if(input == 65 || input == 68 || input == 83 || input == 87 || input == 37 || input == 38 || input == 39 || input == 40)
+        {
+            
+        und = 0 ;
+            
+        // Initializes another array to same value of array to check later for
+        // any movement and if movement is done after pressing key
+        // then add a new tile (after processing input) (it initializes it only 
+        // if movement has been done
+             
+        if( com == 0 )
+        {
+           if( moves % 2 == 0) 
+           {
+               for(int r = 0 ; r < 4 ; r++)
+                {
+                    for(int c = 0 ; c < 4 ; c++)
+                    {
+                        ar1[r][c] = ar[r][c] ;
+                    }
+                }
+            }
+           
+            else
+            {
+                for(int r = 0 ; r < 4 ; r++)
+                {
+                    for(int c = 0 ; c < 4 ; c++)
+                    {
+                        ar2[r][c] = ar[r][c] ;
+                    }
+                }
+           }
+       }
+            
+        // Move boxes after taking input
+        
+        s = lMove(input) ;
+        if(moves % 2== 0)
+        {
+            s1 = s ;
+        }
+        else
+        {
+            s2 = s ;
+        }
+        
+        // Checks if movement has been done 
+       // (if movement is done, com = 0 else com = 1) 
+           
+        if(moves % 2 == 0)
+        { 
+            com = 1 ;
+            outer:
+            for(int r = 0 ; r < 4 ; r++)
+            {
+                for(int c = 0 ; c < 4 ; c++)
+                {
+                    if(ar[r][c] != ar1[r][c])
+                    {
+                        com = 0 ;
+                        break outer ;
+                    }
+                }
+            }
+        }
+        
+        else
+        {
+            com = 1 ;
+            out:
+            for(int r = 0 ; r < 4 ; r++)
+            {
+                for(int c = 0 ; c < 4 ; c++)
+                {
+                    if(ar[r][c] != ar2[r][c])
+                    {
+                        com = 0 ;
+                        break out ;
+                    }
+                }
+            }
+        }
+        
+        // If real move is done, it increases number of moves and sets
+        // com (the int to check if real move is done) the rest of the code
+        // proceeds only if real move is done. Thus checking if following
+        // lines should execute only if they are important according to situation
+        
+        if(com == 0)
+        {
+            und = 0 ;
+            moves++ ;
+               
+        // Adds sum to score
+        
+        score = score + s;
+            
+        // Checks if user has won
+        
+        if(b != -1)
+        {
+        
+            if(findHighestTile() == 2048)
+                b = 1 ;
+        
+        if(b == 1)
+        {
+            cl.show(getContentPane(),"card5") ;
+            b = -1 ;
+        }
+        }
+        
+        // Add values (2 or 4) to random remaining boxes as the move is done
+        
+            while(true)
+            {
+                int arr = ( int )( Math.random() * 4 ) ;
+                int arc = ( int )( Math.random() * 4 ) ;
+                int val = ( int )( Math.random() * 5 ) ;
+                if(val != 4)
+                    val = 2 ;
+                if( ar[arr][arc] != 0 )
+                    continue ;
+                else
+                {
+                    ar[arr][arc] = val ;
+                    break;
+                }        
+            }
+          
+        // Checks if user has lost
+        
+        // Initializing an int so that if its value does not change, game would
+        // end
+        
+        int end = 1 ;
+        
+        // Checks if any empty spaces are there
+        
+        check:
+        for(int r = 0 ; r < 4 ; r++)
+        {
+            for(int c = 0 ; c < 4 ; c++)
+            {
+                if(ar[r][c] == 0)
+                {
+                    end = 0 ;
+                    break check;
+                }
+            }
+        }
+        
+        // Checks if any two consecutive boxes have same value and if that is 
+        // the case, then the game would continue
+        
+        if(end == 1)
+        {
+          for( int r = 0 ; r < 4 ; r++ )
+            {
+                if(ar[r][0] == ar[r][1])
+                {
+                    end = 0 ;
+                    break ;
+                }
+                if(ar[r][1] == ar[r][2])
+                {
+                    end = 0 ;
+                    break ;
+                }
+                if(ar[r][2] == ar[r][3])
+                {
+                    end = 0 ;
+                    break ;
+                }
+            }
+        }
+        
+        if(end == 1)
+        {
+            for(int c = 0 ; c < 4 ; c++ )
+            {
+                if(ar[0][c] == ar[1][c])
+                {
+                    end = 0 ;
+                    break ;
+                }
+                if(ar[1][c] == ar[2][c])
+                {
+                    end = 0 ;
+                    break ;
+                }
+                if(ar[2][c] == ar[3][c])
+                {
+                    end = 0 ;
+                    break ;
+                }
+            }
+        }
+        
+        // If no consecutive boxes are same and no place is empty, the game
+        // would end and end game window will be shown
+        
+        if(end == 1)
+        {
+            cl.show(getContentPane(),"card4") ;
+            fScore.setText(score + "");
+        }
+             
+        // Sets Text to the boxes from array and styles them
+              
+            setLabels() ;            
+            setStyle() ;
+            
+        }  
+        }
+            
+    }                              
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        cl.show(getContentPane(),"card3") ;
+        t1.requestFocus();
+       }                                        
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+         cl.show(getContentPane(),"card4") ;   
+         fScore.setText(score + "");
+    }                                        
+
+    // Undo button
+    
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        
+        undo() ;
+         
+    }                                        
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        //Show hall of fame  
+        cl.show(getContentPane(),"card7") ; 
+        readFile() ;
+        setHallOfFame() ;
+    }                                        
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        cl.show(getContentPane(),"card10") ; 
+    }                                         
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    // Show Hall of Fame   
+        cl.show(getContentPane(),"card7") ; 
+        allHallOfFame() ;        
+    }                                        
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        tin.setText("");
+        cl.show(getContentPane(),"card1") ; 
+        tin.requestFocus();
+        a1 = "" ;
+        lin.setText("");
+        name = "" ;
+        ab = 0 ;
+    }                                         
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        cl.show(getContentPane(),"card3") ;   
+        undo() ;
+    }                                        
+
+    private void sconActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        if(ab >= 3 && ab <= 8)
+        {
+            cl.show(getContentPane(), "card2") ;
+            name = tin.getText() ;
+            lUser.setText(name);
+            Pl_n.setText(name);
+        }
+        else
+        {
+            tin.requestFocus();
+        }
+        
+    }                                    
+
+    private void tinKeyReleased(java.awt.event.KeyEvent evt) {                                
+        String bt = tin.getText() ;
+        bt = bt.toLowerCase() ;
+        int bl = bt.length() ;
+        if(bl != 0)
+        {
+            tin.setText(bt);
+            tem = bt.charAt(bt.length() - 1) ;
+        }
+        
+        if(tem != ' ')
+        {
+            tin.setText(bt);
+            a1 = tin.getText() ;
+            ab = a1.length() ;
+            if( ab > 8)
+            {
+                tin.setText(a2);
+                a1 = a2 ;
+            }
+            a2 = a1 ;
+            lin.setText(a1);
+            tin.requestFocus();
+            ab = a1.length() ;
+        }
+        else
+        {
+            tin.setText(a1);
+        }
+    }                               
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        cl.show(getContentPane(),"card4") ;   
+        fScore.setText(score + "");  
+    }                                         
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        cl.show(getContentPane(),"card8") ;   
+
+    }                                         
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+                // Show Main Menu
+                cl.show(getContentPane(),"card2") ;   
+    }                                         
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        cl.show(getContentPane(),"card7") ;  
+    }                                         
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        cl.show(getContentPane(),"card9") ;  
+    }                                         
+
+    private void tinActionPerformed(java.awt.event.ActionEvent evt) {                                    
+        // TODO add your handling code here:
+    }                                   
+
+    private void t1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
+        // TODO add your handling code here:
+    }                                  
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        cl.show(getContentPane(), "card2");
+    }                                         
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        cl.show(getContentPane(), "card2");
+    }                                         
+
+    
+    
+    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        
+
+  
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new NewJFrame().setVisible(true);
+            }
+        });
+    }
+    // Variables declaration - do not modify                     
+    private javax.swing.JPanel About_Us;
+    private javax.swing.JPanel Game;
+    private javax.swing.JPanel Game_Over;
+    private javax.swing.JPanel HOF_HS;
+    private javax.swing.JPanel HOF_HT;
+    private javax.swing.JPanel Instructions;
+    private javax.swing.JPanel Menu;
+    private javax.swing.JLabel Pl_n;
+    private javax.swing.JPanel Register;
+    private javax.swing.JPanel You_Won;
+    private javax.swing.JLabel fScore;
+    private javax.swing.JLabel hsn1;
+    private javax.swing.JLabel hsn2;
+    private javax.swing.JLabel hsn3;
+    private javax.swing.JLabel hsn4;
+    private javax.swing.JLabel hsn5;
+    private javax.swing.JLabel hss1;
+    private javax.swing.JLabel hss2;
+    private javax.swing.JLabel hss3;
+    private javax.swing.JLabel hss4;
+    private javax.swing.JLabel hss5;
+    private javax.swing.JLabel htn1;
+    private javax.swing.JLabel htn2;
+    private javax.swing.JLabel htn3;
+    private javax.swing.JLabel htn4;
+    private javax.swing.JLabel htn5;
+    private javax.swing.JLabel hts1;
+    private javax.swing.JLabel hts2;
+    private javax.swing.JLabel hts3;
+    private javax.swing.JLabel hts4;
+    private javax.swing.JLabel hts5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel l1;
+    private javax.swing.JLabel l10;
+    private javax.swing.JLabel l11;
+    private javax.swing.JLabel l12;
+    private javax.swing.JLabel l13;
+    private javax.swing.JLabel l14;
+    private javax.swing.JLabel l15;
+    private javax.swing.JLabel l16;
+    private javax.swing.JLabel l2;
+    private javax.swing.JLabel l3;
+    private javax.swing.JLabel l4;
+    private javax.swing.JLabel l5;
+    private javax.swing.JLabel l6;
+    private javax.swing.JLabel l7;
+    private javax.swing.JLabel l8;
+    private javax.swing.JLabel l9;
+    private javax.swing.JLabel lUser;
+    private javax.swing.JLabel lin;
+    private javax.swing.JLabel lscore;
+    private javax.swing.JLabel lscore1;
+    private javax.swing.JButton scon;
+    private javax.swing.JTextField t1;
+    private javax.swing.JTextField tin;
+    // End of variables declaration                   
+}
